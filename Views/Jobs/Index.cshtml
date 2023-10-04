@@ -1,0 +1,55 @@
+﻿@model IEnumerable<EthioServices.Models.Jobs>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.location)
+            </th>
+      
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.location)
+            </td>
+            
+            <td>
+                    @if (User.IsInRole("Client")){
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    }
+                    @if (User.IsInRole("Talent")){
+                        <a href="@Url.Action("MessageLink", "Messages", new { id2 = item.ownerId })">Send Message</a>
+                    }
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,27 @@
+﻿@model IEnumerable<EthioServices.Models.Message>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Message List</h1>
+
+<table class="table">
+   
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                    @Html.DisplayFor(modelItem => item.senderName)
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.text)
+            </td>
+            <td>
+                <a href="@Url.Action("MessageLink", "Messages", new { id2 = item.sender })">Chat History</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

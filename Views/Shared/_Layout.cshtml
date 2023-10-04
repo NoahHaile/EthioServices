@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - EthioServices</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/EthioServices.styles.css" asp-append-version="true" />
+</head>
+<style>
+    .ho {
+        background-color: #18191a;
+        color: ivory;
+    }
+    .ho:hover {
+        background-color: #ddd;
+        color: black;
+    }
+
+</style>
+<body>
+    <header>
+        
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3" style="padding: 0;">
+            <div style="color: ivory; background-color: #18191a; width: 100%; height: 100%; margin: 0; ">
+            <div class="container-fluid">
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                                <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Index"><span style="color: ivory;" class="ho">Home</span></a>
+                        </li>
+                        <li class="nav-item">
+                                <a class="nav-link " asp-area="" asp-controller="Jobs" asp-action="Index"><span style="color: ivory;" class="ho">Explore</span></a>
+                        </li>
+                        <li>
+                            <form asp-controller="Jobs" asp-action="ShowSearchResults">
+                                    
+                                <div class="form-group" style="display: table ">
+                                    <div style="display: table-cell">
+                                            <span style="color: ivory;" class="ho">
+                                                <input type="submit" value="Search" style="color: ivory; background-color: #18191a;" class="ho" />
+                                        </span>
+                                    </div>
+                                    <div style="display: table-cell">
+                                        <input name="SearchPhrase" class="form-control" size="10" />
+                                    </div>
+                                </div>
+                                    
+                                
+                            </form>
+                        </li>
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+            </div>
+        </nav>
+            
+
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2023 - EthioServices - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
